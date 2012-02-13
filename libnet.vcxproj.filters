@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="net_connection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_log.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_service.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_vector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_hash.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_list.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_lock.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_signaler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_internal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_listener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_connector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_err.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_def.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_broker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_buffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_base_msg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_thread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_socket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_io_event.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_io_select.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="net_connection.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_log.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_service.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_hash.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_list.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_lock.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_vector.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_queue.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_signaler.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_listener.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_connector.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_err.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_broker.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_base_msg.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_thread.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_socket.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_io_event.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_io_select.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

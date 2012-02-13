@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E5ADE1B5-7DF5-4367-92DD-29261B867C5D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libnet</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="net.h" />
+    <ClInclude Include="net_base_msg.h" />
+    <ClInclude Include="net_broker.h" />
+    <ClInclude Include="net_buffer.h" />
+    <ClInclude Include="net_connection.h" />
+    <ClInclude Include="net_connector.h" />
+    <ClInclude Include="net_err.h" />
+    <ClInclude Include="net_def.h" />
+    <ClInclude Include="net_hash.h" />
+    <ClInclude Include="net_internal.h" />
+    <ClInclude Include="net_io_event.h" />
+    <ClInclude Include="net_list.h" />
+    <ClInclude Include="net_listener.h" />
+    <ClInclude Include="net_lock.h" />
+    <ClInclude Include="net_log.h" />
+    <ClInclude Include="net_queue.h" />
+    <ClInclude Include="net_io_select.h" />
+    <ClInclude Include="net_service.h" />
+    <ClInclude Include="net_socket.h" />
+    <ClInclude Include="net_thread.h" />
+    <ClInclude Include="net_vector.h" />
+    <ClInclude Include="net_signaler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="net.c" />
+    <ClCompile Include="net_base_msg.c" />
+    <ClCompile Include="net_broker.c" />
+    <ClCompile Include="net_connection.c" />
+    <ClCompile Include="net_connector.c" />
+    <ClCompile Include="net_err.c" />
+    <ClCompile Include="net_hash.c" />
+    <ClCompile Include="net_io_event.c" />
+    <ClCompile Include="net_list.c" />
+    <ClCompile Include="net_listener.c" />
+    <ClCompile Include="net_lock.c" />
+    <ClCompile Include="net_log.c" />
+    <ClCompile Include="net_queue.c" />
+    <ClCompile Include="net_io_select.c" />
+    <ClCompile Include="net_service.c" />
+    <ClCompile Include="net_socket.c" />
+    <ClCompile Include="net_thread.c" />
+    <ClCompile Include="net_vector.c" />
+    <ClCompile Include="net_signaler.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
