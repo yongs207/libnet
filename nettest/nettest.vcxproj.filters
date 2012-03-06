@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{9884c9fa-943e-43a9-9b3f-56c7880be766}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="testsignal.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_signaler.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_thread.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_err.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_socketpair.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="testtime.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_pqueue.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_time.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_lock.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="testlog.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_log.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="testsimpleserver.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testconn.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testbuffer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testconnection.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_buffer.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_connection.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_io_select.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net_vector.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\net_signaler.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_thread.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_def.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_err.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_socketpair.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_pqueue.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_time.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_lock.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_log.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_hash.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_buffer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_connection.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_io_select.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net_vector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
