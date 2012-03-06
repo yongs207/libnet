@@ -1,5 +1,9 @@
 #ifndef net_base_msg_h
 #define net_base_msg_h
+
+//消息需要引用计数
+
+
  
 #define COMMON_HEADER 	unsigned int msg_len;/*包含基本头长的msg长度*/                                          \
 	                    unsigned short msg_type;/*其中规定60000-65536的消息为系统分配的消息*/					 \

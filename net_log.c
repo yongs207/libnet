@@ -1,6 +1,4 @@
 #include "net_log.h"
-#include "net_thread.h"
-#include "net_queue.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -14,7 +12,6 @@ struct net_log_
 {
   int log_level;
   FILE* file_handle;
-  queue_t* msg_queue;
   void* handle;
   int started;
   callback_t log;
@@ -24,45 +21,20 @@ struct net_log_
 #define LOG_MAX_STRING_LEN 256
 static const char* log_level_str [] ={"[WARN]","[DEBUG]","[INFO]","[EXCEPTION]","[ERROR]"};
 
-
-
-static void log_loop(void* arg)
-{
-	net_log_t* net_log = (net_log_t*)arg;
-	while(net_log->started)
-	{
-		void* log_str=nqueue_sync_pop(net_log->msg_queue);
-	    fprintf(net_log->file_handle,(const char*)log_str);
-		fflush(net_log->file_handle);
-		free(log_str);
-	}
-	nthread_join(net_log->handle);
-}
-
 static void nlog_log_(net_log_t* self,log_level_t log_level,char* format,va_list arg_ptr)
 {
 	if(self->log_level>log_level||log_level>LOG_ERROR)
 	 return;
 	else
 	{
-		//拼接字符串
-		char* log_str = (char*)malloc(LOG_MAX_STRING_LEN);
-		char tmp_str[100];
-		time_t t = time( 0 ); 
-		
-	    sprintf(tmp_str,"%s %s",log_level_str[log_level],ctime(&t));
-		strcat(tmp_str,format);
-		vsprintf(log_str,tmp_str,arg_ptr);
-		va_end(arg_ptr);
-		
-		if(log_level==LOG_ERROR)//LOG_ERROR直接输出处理
-		{
-			fprintf(self->file_handle,log_str);
-			fflush(self->file_handle);
-			free(log_str);
-		}
-		else//将数据放入队列中进行处理
-			nqueue_sync_push(self->msg_queue,log_str);
+    time_t curtime = time (NULL);
+    struct tm *loctime = localtime (&curtime);
+    char formatted [30];
+    strftime (formatted, 30, "%Y-%m-%d %H:%M:%S ", loctime);
+    fprintf(self->file_handle,"%s %s:",log_level_str[log_level],formatted);
+    vfprintf (self->file_handle,format, arg_ptr);
+    fprintf(self->file_handle,"\n");
+    fflush (self->file_handle);
 	}
 	
 }
@@ -73,11 +45,8 @@ net_log_t* nlog_create()
 	net_log_t* self = (net_log_t*)malloc(sizeof(net_log_t));
 	self->file_handle = stderr;
 	self->log_level = LOG_WARN;
-	self->msg_queue = nqueue_create(1);
 	self->started =1;
 	self->log = nlog_log_;
-	self->msg_queue = nqueue_create(1);
-	self->handle = nthread_create(log_loop,self);
 	return self;
 }
 
@@ -125,4 +94,44 @@ void nlog_log(net_log_t* self,log_level_t log_level,char* format,...)
 void nlog_set_callback(net_log_t* self,callback_t log)
 {
 	self->log = log;
+}
+
+void nlog_warn_log(net_log_t* self,char* format,...)
+{
+  va_list arg_ptr;
+  va_start(arg_ptr, format);
+  self->log(self,LOG_WARN,format,arg_ptr);
+  va_end(arg_ptr);
+}
+
+void nlog_debug_log(net_log_t* self,char* format,...)
+{
+  va_list arg_ptr;
+  va_start(arg_ptr, format);
+  self->log(self,LOG_DEBUG,format,arg_ptr);
+  va_end(arg_ptr);
+}
+
+void nlog_info_log(net_log_t* self,char* format,...)
+{
+  va_list arg_ptr;
+  va_start(arg_ptr, format);
+  self->log(self,LOG_INFO,format,arg_ptr);
+  va_end(arg_ptr);
+}
+
+void nlog_exception_log(net_log_t* self,char* format,...)
+{
+  va_list arg_ptr;
+  va_start(arg_ptr, format);
+  self->log(self,LOG_EXCEPTION,format,arg_ptr);
+  va_end(arg_ptr);
+}
+
+void nlog_error_log(net_log_t* self,char* format,...)
+{
+  va_list arg_ptr;
+  va_start(arg_ptr, format);
+  self->log(self,LOG_ERROR,format,arg_ptr);
+  va_end(arg_ptr);
 }

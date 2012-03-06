@@ -35,6 +35,12 @@ void nlog_log(net_log_t* self,log_level_t log_level,char* format,...);
 //设置log的回调函数，在有日志产生时将回调此函数，当没有设置回调函数时采用系统默认的函数进行处理
 void nlog_set_callback(net_log_t* self,callback_t log);
 
+void nlog_warn_log(net_log_t* self,char* format,...);
+void nlog_debug_log(net_log_t* self,char* format,...);
+void nlog_info_log(net_log_t* self,char* format,...);
+void nlog_exception_log(net_log_t* self,char* format,...);
+void nlog_error_log(net_log_t* self,char* format,...);
+
 
 
 #endif

@@ -81,6 +81,15 @@
     <ClInclude Include="net_io_select.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="net_time.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_pqueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="net_socketpair.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="net_connection.c">
@@ -138,6 +147,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="net_io_select.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_time.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_pqueue.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="net_socketpair.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

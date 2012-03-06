@@ -5,7 +5,10 @@
 #include <errno.h>
 #include "net_def.h"
 
+//需要添加的错误类型
 
+// connection not enough
+#define NET_ERROR_CONN_NOT_ENDOGH 1
 
 
 #if defined __GNUC__

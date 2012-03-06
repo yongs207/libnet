@@ -1,12 +1,9 @@
 #ifndef net_def_h
 #define net_def_h
 #ifdef _WIN32
-#if(_WIN32_WINNT >= 0x0400)
-#include <winsock2.h>
-#include <mswsock.h>
-#else
-#include <winsock.h>
-#endif
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#include <winsock2.h> 
 #include <ws2tcpip.h>
 #include <ipexport.h>
 #include <process.h>

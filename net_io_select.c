@@ -7,18 +7,17 @@ struct net_io_select_
 {
 	fd_t maxfd;
 	fd_set source_set_in;
+  fd_set source_set_out;
 	fd_set readfds;
-    int retired; //用于标记其否存在已废弃的socket
+  fd_set writefds;
+  int retired; //用于标记其否存在已废弃的socket
 	net_log_t* net_log_;
-	net_connection_t* conn_array;
 	int work_started;
 	void* thread_handle;
 	nvector_t* connector_vector;
-	//为心跳包预留
-	int heart_beat_time;
 };
 
-static void remove_retired_socket(net_io_select_t* own)
+static void s_remove_retired_socket(net_io_select_t* own)
 {
 	int i,conn_size = nvector_size(own->connector_vector);
 	//  Destroy retired event sources.
@@ -26,13 +25,13 @@ static void remove_retired_socket(net_io_select_t* own)
 	{
 		net_connection_t* item = (net_connection_t*)(net_connection_t*)nvector_at(own->connector_vector,i);
 		if(item->connection_status&STATUS_ALIVE&&item->fd ==retired_fd);
-			nvector_remove_at(own->connector_vector,i);
+			nvector_remove_at(own->connector_vector,i);//状态可能已发生变化
 	}
 	own->retired = 0;
 }
 
 
-static void work_loop(void* arg)
+static void s_work_loop(void* arg)
 {
 	net_io_select_t* own =(net_io_select_t*)(arg);
 	struct timeval tv = {2,0};
@@ -42,6 +41,8 @@ static void work_loop(void* arg)
 		//  Intialise the pollsets.
 		tv.tv_sec=2-tv.tv_sec;// on linux the value update to 0
 		memcpy (&own->readfds, &own->source_set_in, sizeof own->source_set_in);
+    memcpy (&own->writefds, &own->source_set_out, sizeof own->source_set_out);
+
 		rc = select (own->maxfd + 1, &own->readfds, NULL, NULL,&tv);
 #ifdef _WIN32
 		if(rc == SOCKET_ERROR)
@@ -69,32 +70,32 @@ static void work_loop(void* arg)
 				{
 					fd_t fd = item->fd ;
 					if (fd == retired_fd)
-					continue;
+					  continue;
 					if (FD_ISSET (fd, &own->readfds))
-					{
-						// conn->callback
-					}
-						//do_receive(socket_ctx_ptr,&socket_ctx_ptr->sessions[i]);
+						item->read_fun(item);
+          if (fd == retired_fd)
+            continue;
+          if (FD_ISSET (fd, &own->writefds))
+            item->write_fun(item);
 				}
 			}
 		}
 
 		//check_heartbeat(socket_ctx_ptr);
 		if(own->retired)
-			remove_retired_socket(own);
+			s_remove_retired_socket(own);
 	}
 }
 
-net_io_select_t* nio_select_create( net_log_t* net_log_ ,net_connection_t* conn_array)
+net_io_select_t* nio_select_create( net_log_t* net_log_ )
 {
 	net_io_select_t* own = (net_io_select_t*)malloc(sizeof(net_io_select_t));
 	own->net_log_ = net_log_;
-	own->conn_array = conn_array;
 	own->connector_vector = nvector_new(FD_SETSIZE);
 	FD_ZERO (&own->source_set_in);
 	own->maxfd=retired_fd;
 	own->retired=0;
-	own->heart_beat_time=0;
+  return own;
 }
 
 //启动io线程进行事件监听
@@ -102,7 +103,7 @@ void nio_select_dispatch(void*self)
 {
 	net_io_select_t* own =(net_io_select_t*)(self);
 	own->work_started =1;
-	own->thread_handle = nthread_create(work_loop,own);
+	own->thread_handle = nthread_create(s_work_loop,own);
 }
 
 int nio_select_add_fd(void* self,net_connection_t* conn_ptr)
@@ -133,6 +134,11 @@ int  nio_select_remove_fd(void* self,net_connection_t* conn_ptr)
 	//  Discard all events generated on this file descriptor.
 	FD_CLR (fd, &own->readfds);
 
+  //  Stop polling on the descriptor.
+  FD_CLR (fd, &own->source_set_out);
+  //  Discard all events generated on this file descriptor.
+  FD_CLR (fd, &own->writefds);
+
 	//  Adjust the maxfd attribute if we have removed the
 	//  highest-numbered file descriptor.
 	if (fd == own->maxfd) {
@@ -148,6 +154,20 @@ int  nio_select_remove_fd(void* self,net_connection_t* conn_ptr)
 		}
 	}
 	own->retired=1;
+  return conn_ptr->id;
+}
+
+void  nio_select_set_out(void*self,net_connection_t* conn_ptr)
+{
+  net_io_select_t* own =(net_io_select_t*)(self);
+  FD_SET (conn_ptr->fd, &own->source_set_in);
+}
+
+
+void  nio_select_reset_out(void*self,net_connection_t* conn_ptr)
+{
+  net_io_select_t* own =(net_io_select_t*)(self);
+  FD_CLR (conn_ptr->fd, &own->source_set_in);
 }
 
 //析构net_io_event_t，关闭io模型中启动的io线程

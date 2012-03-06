@@ -214,10 +214,10 @@ const char * errno_to_string( int errno_ )
 
 int wsa_error_to_errid (int no_)
 {
-  switch(no_)
+  /* switch(no_)
   {
   case WSAECONNRESET:
-    return ERR_CONNECT_CLOSE;
+  return ERR_CONNECT_CLOSE;
   case  WSABASEERR :
   case  WSAEINTR :
   case  WSAEBADF :
@@ -228,9 +228,9 @@ int wsa_error_to_errid (int no_)
   case  WSAEWOULDBLOCK :
   case  WSAEINPROGRESS :
   case  WSAEALREADY :
-    return ERR_UNKNOWN;
+  return ERR_UNKNOWN;
   case  WSAENOTSOCK :
-    return ERR_CONNECT_CLOSE;
+  return ERR_CONNECT_CLOSE;
   case  WSAEDESTADDRREQ :
   case  WSAEMSGSIZE :
   case  WSAEPROTOTYPE :
@@ -240,25 +240,25 @@ int wsa_error_to_errid (int no_)
   case  WSAEOPNOTSUPP :
   case  WSAEPFNOSUPPORT :
   case  WSAEAFNOSUPPORT :
-    return ERR_UNKNOWN;
+  return ERR_UNKNOWN;
   case  WSAEADDRINUSE :
-    return ERR_BINDING_REFUSED;
+  return ERR_BINDING_REFUSED;
   case  WSAEADDRNOTAVAIL :
   case  WSAENETDOWN :
   case  WSAENETUNREACH :
   case  WSAENETRESET :
-    return ERR_UNKNOWN;
+  return ERR_UNKNOWN;
   case  WSAECONNABORTED :
-    return ERR_SERVER_ABORT;
+  return ERR_SERVER_ABORT;
   case  WSAENOBUFS :
   case  WSAEISCONN :
   case  WSAENOTCONN :
   case  WSAESHUTDOWN :
   case  WSAETOOMANYREFS :
   case  WSAETIMEDOUT :
-    return ERR_UNKNOWN;
+  return ERR_UNKNOWN;
   case  WSAECONNREFUSED :
-    return ERR_CONNECT_REFUSED;
+  return ERR_CONNECT_REFUSED;
   case  WSAELOOP :
   case  WSAENAMETOOLONG :
   case  WSAEHOSTDOWN :
@@ -276,12 +276,12 @@ int wsa_error_to_errid (int no_)
   case  WSATRY_AGAIN :
   case  WSANO_RECOVERY :
   case  WSANO_DATA :
-    return ERR_UNKNOWN;
+  return ERR_UNKNOWN;
   case 0:
-    return ERR_REMOTE_NORMAL_CLOSE;
+  return ERR_REMOTE_NORMAL_CLOSE;
   default:
-    net_assert(0);
-  }
+  net_assert(0);
+  }*/
   return 0;
 }
 #else

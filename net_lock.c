@@ -1,9 +1,5 @@
 #include "net_lock.h"
-#ifdef _WIN32
-#include "windowdef.h"
-#else
-#include <pthread.h>
-#endif
+
 
 #include <stdlib.h>
 #include <assert.h>

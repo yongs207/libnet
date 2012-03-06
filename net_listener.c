@@ -76,13 +76,21 @@ static int resolve_ip_interface (struct sockaddr_storage *addr_, socklen_t *addr
 
 #ifdef _WIN32
 
-static void init(){
+#ifndef WSA_START
+void static socket_init()
+{
   WORD version_requested = MAKEWORD (2, 2);
   WSADATA wsa_data;
   int rc = WSAStartup (version_requested, &wsa_data);
   wsa_assert (rc == 0);
   net_assert (LOBYTE (wsa_data.wVersion) == 2 &&HIBYTE (wsa_data.wVersion) == 2);
 }
+#else
+void static socket_init()
+{
+
+}
+#endif
 
 
 
@@ -95,7 +103,7 @@ fd_t  net_listen (const char *ip_addr,unsigned short port,int backlog_)
     struct sockaddr_storage addr;
     socklen_t addr_len;
     int rc;
-    init();
+    socket_init();
     //  Convert the interface into sockaddr_in structure.
     rc = resolve_ip_interface (&addr, &addr_len, ip_addr,port);
     if (rc != 0)

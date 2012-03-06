@@ -89,11 +89,14 @@
     <ClInclude Include="net_listener.h" />
     <ClInclude Include="net_lock.h" />
     <ClInclude Include="net_log.h" />
+    <ClInclude Include="net_pqueue.h" />
     <ClInclude Include="net_queue.h" />
     <ClInclude Include="net_io_select.h" />
     <ClInclude Include="net_service.h" />
     <ClInclude Include="net_socket.h" />
+    <ClInclude Include="net_socketpair.h" />
     <ClInclude Include="net_thread.h" />
+    <ClInclude Include="net_time.h" />
     <ClInclude Include="net_vector.h" />
     <ClInclude Include="net_signaler.h" />
   </ItemGroup>
@@ -110,11 +113,14 @@
     <ClCompile Include="net_listener.c" />
     <ClCompile Include="net_lock.c" />
     <ClCompile Include="net_log.c" />
+    <ClCompile Include="net_pqueue.c" />
     <ClCompile Include="net_queue.c" />
     <ClCompile Include="net_io_select.c" />
     <ClCompile Include="net_service.c" />
     <ClCompile Include="net_socket.c" />
+    <ClCompile Include="net_socketpair.c" />
     <ClCompile Include="net_thread.c" />
+    <ClCompile Include="net_time.c" />
     <ClCompile Include="net_vector.c" />
     <ClCompile Include="net_signaler.c" />
   </ItemGroup>
